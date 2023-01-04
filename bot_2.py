@@ -33,15 +33,16 @@ def get_user_text(message):
         bot.send_photo(message.chat.id, photo)
     elif message.text == "website":
         # Отвечаем пользователю сообщением и кнопкой перехода на веб сайт.
-        murkup = types.InlineKeyboardMarkup()
-        murkup.add(types.InlineKeyboardButton("Посетить веб сайт", url="https://dzen.ru/"))
-        bot.send_message(message.chat.id, "Перейдите на сайт", reply_markup=murkup)
+        markup = types.InlineKeyboardMarkup()
+        markup.add(types.InlineKeyboardButton("Посетить веб сайт", url="https://dzen.ru/"))
+        bot.send_message(message.chat.id, "Перейдите на сайт", reply_markup=markup)
     elif message.text == "help":
         # Выводим две кнопки меню под строкой ввода сообщения.
-        murkup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
+        markup_2 = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
         website = types.KeyboardButton('Веб сайт')
         start = types.KeyboardButton('Start')
-        murkup.add(website, start)
+        markup_2.add(website, start)
+        bot.send_message(message.chat.id, reply_markup=markup_2)
     else:
         # Отвечаем пользователю, в случае ввода им текста отличного от вышеуказанного.
         bot.send_message(message.chat.id, "Я тебя не понимаю.", parse_mode='html')
