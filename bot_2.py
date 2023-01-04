@@ -9,7 +9,12 @@ bot = telebot.TeleBot('')
 @bot.message_handler(commands=['start'])
 # Отслеживаем команду старт.
 def start(message):
-    mess = f"Привет, <b>{message.from_user.first_name} <u>{message.from_user.last_name}</u></b>"
+    mess = f"Привет, <b>{message.from_user.first_name} <u>{message.from_user.last_name}</u></b>."
+    # Текст приветствия.
+
+    sti = open('jsins.webp', 'rb')
+    # Стикер приветствия.
+    bot.send_sticker(message.chat.id, sti)
     bot.send_message(message.chat.id, mess, parse_mode='html')
 
 
